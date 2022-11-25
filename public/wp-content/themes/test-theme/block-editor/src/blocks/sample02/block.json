@@ -1,0 +1,18 @@
+{
+  "apiVersion": 2,
+  "title": "サンプル02",
+  "name": "my-block/sample02",
+  "category": "text",
+  "icon": "wordpress-alt",
+  "editorScript": "my-block-sample02",
+  "supports": {
+    "className": false
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": ".sample-block-02"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+# Apache
+.htaccess
+.htpasswd
+
+# Sass
+.sass-cache
+*.scssc
+
+# WordPress
+wp-config.php
+*.sql
+public/wp-admin/
+public/wp-content/*
+!public/wp-content/themes
+public/wp-content/themes/*
+!public/wp-content/themes/test-theme
+public/wp-content/themes/test-theme/dist
+public/wp-content/themes/test-theme/block-editor/dist
+public/wp-includes/
+public/index.php
+public/license.txt
+public/readme.html
+public/wp-*.php
+public/xmlrpc.php
+
+
+# Node.js
+node_modules/
+
+# Logfiles and tempfiles
+/log/*
+!/log/.keep
+/tmp
+*.log
+
+# Other unneeded files
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret

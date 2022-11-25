@@ -1,0 +1,22 @@
+{
+  "apiVersion": 2,
+  "title": "サンプル02-b",
+  "name": "my-block/sample02-b",
+  "category": "text",
+  "icon": "wordpress-alt",
+  "editorScript": "my-block-sample02-b",
+  "supports": {
+    "className": false
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source2": "html",
+      "selector": ".sample-block-02--b"
+    },
+    "color": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
