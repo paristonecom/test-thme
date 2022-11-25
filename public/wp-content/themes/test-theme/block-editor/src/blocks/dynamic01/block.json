@@ -1,9 +1,0 @@
-{
-  "apiVersion": 2,
-  "title": "ダイナミック01",
-  "name": "my-block/dynamic01",
-  "category": "text",
-  "icon": "wordpress-alt",
-  "editorScript": "my-block-dynamic01",
-  "attributes": {}
-}
