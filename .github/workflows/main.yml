@@ -1,0 +1,32 @@
+name: Deploy to the server
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  # master
+  deploy_master:
+    name: Depoy to the production server.
+    if: ${{ contains(github.ref, 'master') }}
+    runs-on: ubuntu-latest
+    env:
+      SERVER_HOST: ${{ secrets.SERVER_HOST }}
+      SERVER_GIT_ROOT: /home/tokupe/tokupe.com/public_html
+      SSH_USER: ${{ secrets.SERVER_SSH_USER }}
+      SSH_PORT: ${{ secrets.SERVER_SSH_PORT }}
+    steps:
+      - name: Prepare the ssh key.
+        env:
+          SSH_KEY: ${{ secrets.SERVER_SSH_KEY }}
+        run: |
+          mkdir ~/.ssh
+          echo "${{ env.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p ${{ env.SSH_PORT }} ${{ env.SERVER_HOST }} > ~/.ssh/known_hosts
+      - name: Pull sources hosted on GitHub from the server to be deployed to via SSH.
+        run: |
+          BRANCH=$(echo ${{ github.ref }} | sed -e 's/refs\/heads\///g')
+          ssh ${{ env.SSH_USER }}@${{ env.SERVER_HOST }} -p ${{ env.SSH_PORT }} -i ~/.ssh/id_rsa "cd ${{ env.SERVER_GIT_ROOT }} && git fetch && git checkout $BRANCH && git pull origin $BRANCH && exit"
+
